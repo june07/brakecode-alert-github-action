@@ -29,3 +29,6 @@ runs:
     - ${{ inputs.content }}
     - ${{ inputs.badge-text }}
     - ${{ inputs.badge-color }}
+branding:
+  icon: 'bell'
+  color: 'yellow'
