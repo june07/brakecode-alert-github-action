@@ -3,7 +3,7 @@ cat <<- HERE > /tmp/heredoc
 {
     "topic": "$2",
     "title": "$3",
-    "content": "$4" | base64 -w0)",
+    "content": "$(echo $4 | base64 -w0)",
     "badge": {
         "text": "$5",
         "color": "$6"
