@@ -1,0 +1,32 @@
+# action.yml
+name: 'BrakeCODE Alert'
+description: 'GitHub Action to send alerts to BrakeCODE and associated tooling (i.e. NiM).'
+inputs:
+  x-api-key:
+    description: 'Your BrakeCODE API Key'
+    required: true
+  topic:
+    description: 'Alert Topic'
+    default: 'notification'
+  title:
+    description: 'Alert Title'
+    required: true
+  content:
+    description: 'Alert Content'
+  badge-text:
+    description: 'Sets the badge text for the browser action. The badge is displayed on top of the icon.'
+  badge-color:
+    description: 'Sets the background color for the badge.'
+outputs:
+  message-id: # id of output
+    description: 'The successfully sent message Id.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.x-api-key }}
+    - ${{ inputs.topic }}
+    - ${{ inputs.title }}
+    - ${{ inputs.content }}
+    - ${{ inputs.badge-text }}
+    - ${{ inputs.badge-color }}
