@@ -18,7 +18,7 @@ curl https://api.brakecode.com/api/v1/alert?appId=alerts \
 -d "$payload" >> $GITHUB_OUTPUT
 
 
-#$1 - ${{ inputs.x-api-key }}
+#$1 - ${{ inputs.api-key }}
 #$2 - ${{ inputs.topic }}
 #$3 - ${{ inputs.title }}
 #$4 - ${{ inputs.content }}
