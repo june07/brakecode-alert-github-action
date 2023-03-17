@@ -13,13 +13,19 @@ HERE
 
 payload=$(cat /tmp/heredoc | jq -c | base64 -w0)
 
-output=$(curl https://api.brakecode.com/api/v1/alert?appId=alerts \
+response=$(curl -s -w ' %{response_code}' https://api.brakecode.com/api/v1/alert?appId=alerts \
 -H 'Content-Type: text/plain' \
 -H 'x-request-id: github-actions' \
 -H "x-api-key: { \"apikey\": \"$1\" }" \
 -d "$payload")
 
-echo "message-id=${output}" >> $GITHUB_OUTPUT
+if [ -n "$(echo $response | egrep "\s200")" ]; then
+    message_id=$(echo $response | sed 's/ 200//' | jq -r '.id')
+    echo "message-id=$message_id" >> $GITHUB_OUTPUT
+else
+    echo $response
+    exit 1
+fi
 
 #$1 - ${{ inputs.api-key }}
 #$2 - ${{ inputs.topic }}
