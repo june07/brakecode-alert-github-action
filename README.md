@@ -1,0 +1,40 @@
+# BrakeCODE Alert GitHub Action
+
+GitHub Action to send alerts to BrakeCODE and associated tooling (i.e. NiM).
+
+## Inputs
+
+## `api-key`
+**Required** Your BrakeCODE API Key.
+
+## `topic`
+Alert topic `"notification"`.
+
+## `title`
+**Required** Alert title.
+
+## `content`
+Alert content.
+
+## `badge-text`
+Sets the badge text for the browser action. The badge is displayed on top of the icon.
+
+## `badge-color`
+Sets the background color for the badge.
+
+## Outputs
+
+## `message-id`
+The successfully sent message Id.
+
+## Example usage
+
+```
+uses: actions/brakecode-alert@v1
+with:
+  api-key: "${{ secrets.BRAKECODE_API_KEY }}"
+  title: "GitHub workflow completed."
+  content: "${{ github.repository }}"
+  badge-text: "${{ github.repository }}"
+  badge-color: "#FF9800"
+```
