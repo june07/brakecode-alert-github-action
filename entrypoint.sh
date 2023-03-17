@@ -15,6 +15,7 @@ payload=$(cat /tmp/heredoc | jq -c | base64 -w0)
 
 output=$(curl -vvv https://api.brakecode.com/api/v1/alert?appId=alerts \
 -H 'Content-Type: text/plain' \
+-H 'x-request-id: github-actions' \
 -H "x-api-key: { \"apikey\": \"$1\" }" \
 -d "$payload")
 
