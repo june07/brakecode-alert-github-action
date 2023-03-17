@@ -2,10 +2,14 @@
 
 GitHub Action to send alerts to BrakeCODE and associated tooling (i.e. NiM).
 
+![NiM Alert](https://blog.june07.com/content/images/2023/01/nimBadgeAnimation.gif)
+
+https://blog.june07.com/brakecode-nim-alert-feature/
+
 ## Inputs
 
 ## `api-key`
-**Required** Your BrakeCODE API Key.
+**Required** Your BrakeCODE API Key. Get a free one at https://brakecode.com
 
 ## `topic`
 Alert topic `"notification"`.
