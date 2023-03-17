@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -l
 cat <<- HERE > /tmp/heredoc
 {
     "topic": "$2",
@@ -15,7 +15,7 @@ payload=$(cat /tmp/heredoc | jq -c | base64 -w0)
 curl https://api.brakecode.com/api/v1/alert?appId=alerts \
 -H 'Content-Type: text/plain' \
 -H "x-api-key: { \"apikey\": \"$1\" }" \
--d "$payload"
+-d "$payload" >> $GITHUB_OUTPUT
 
 
 #$1 - ${{ inputs.x-api-key }}
